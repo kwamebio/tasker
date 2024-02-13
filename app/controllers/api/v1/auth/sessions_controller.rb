@@ -1,4 +1,5 @@
 class Api::V1::Auth::SessionsController < ApiController
+    skip_before_action :authorize, only: [:create]
 
     def create
       user = User.find_by(email: user_params[:email])
@@ -10,10 +11,10 @@ class Api::V1::Auth::SessionsController < ApiController
       end
     end
 
-    def destroy
-      current_user.update(auth_token: nil)
-      head :no_content
-    end
+    # def destroy
+    #   current_user.update(auth_token: nil)
+    #   head :no_content
+    # end
 
     private
 
