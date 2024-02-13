@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_13_151144) do
     t.string "phone_number"
     t.string "email"
     t.string "password_digest"
+    t.string "auth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
