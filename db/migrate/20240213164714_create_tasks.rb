@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.string :title
       t.string :body
       t.string :description
-      t.string :status, default: "pending"
+      t.integer :status, default: 0
       t.references :user, null: false, foreign_key: true
 
 
