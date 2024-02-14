@@ -4,6 +4,8 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.string :title
       t.string :body
       t.string :description
+      t.string :assigned_to
+      t.string :estimated_time
       t.integer :status, default: 0
       t.datetime :start_date
       t.datetime :end_date

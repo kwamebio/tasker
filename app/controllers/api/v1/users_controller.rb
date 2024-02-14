@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApiController
 
   skip_before_action :authorize_user, only: [:create]
+  skip_before_action :authorize_admin, only: [:create]
 
   def create
     @user = User.new(user_params)

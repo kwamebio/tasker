@@ -29,6 +29,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_13_215352) do
     t.string "title"
     t.string "body"
     t.string "description"
+    t.string "assigned_to"
+    t.string "estimated_time"
     t.integer "status", default: 0
     t.datetime "start_date"
     t.datetime "end_date"

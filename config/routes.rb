@@ -6,7 +6,11 @@ Rails.application.routes.draw do
         post 'admin_login', to: 'admin_sessions#create'
       end
       resources :users
-      resources :tasks
+      resources :tasks do
+        collection do
+          patch 'assign'
+        end
+      end
       resources :admins
     end
   end

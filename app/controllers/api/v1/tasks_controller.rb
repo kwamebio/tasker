@@ -21,6 +21,13 @@ class Api::V1::TasksController < ApiController
     end
   end
 
+  def assign
+    @task = Task.find(params[:id])
+    @user = User.find(params[:user_id])
+    @task.update(assigned_to: @user)
+    render json: TaskSerializer.new(@task).serializable_hash[:data][:attributes]
+  end
+
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
