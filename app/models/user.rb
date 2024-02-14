@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_secure_password
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, through: :admin
 
   validates :first_name, :last_name, :phone_number, :email, presence: true
   validates :email, uniqueness: true

@@ -1,4 +1,4 @@
-class Api::V1::Auth::SessionsController < ApiController
+class Api::V1::Auth::UserSessionsController < ApiController
     skip_before_action :authorize, only: [:create]
 
     def create
@@ -10,6 +10,7 @@ class Api::V1::Auth::SessionsController < ApiController
         render json: { errors: ['Invalid Email/Password'] }, status: :unauthorized
       end
     end
+
 
     # def destroy
     #   current_user.update(auth_token: nil)
