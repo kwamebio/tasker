@@ -1,11 +1,11 @@
-module Authenticable
-    def current_user
-      return @current_user if @current_user
+module AdminAuthenticable
+    def current_admin
+      return @current_admin if @current_admin
 
       begin
         token = extract_token_from_request
-        @current_user ||= find_current_user_by_token(token)
-        @current_user
+        @current_admin ||= find_current_admin_by_token(token)
+        @current_admin
       rescue => ex
         puts "ERROR: #{ex.inspect}"
         nil
@@ -20,8 +20,8 @@ module Authenticable
       token
     end
 
-    def find_current_user_by_token(token)
+    def find_current_admin_by_token(token)
         decoded_token = JsonWebToken.decode(token)
-        User.find(decoded_token[:user_id])
+        Admin.find(decoded_token[:admin_id])
     end
 end

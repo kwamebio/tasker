@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApiController
 
-  skip_before_action :authorize, only: [:create]
+  skip_before_action :authorize_user, only: [:create]
 
   def create
     @user = User.new(user_params)
@@ -8,6 +8,16 @@ class Api::V1::UsersController < ApiController
       render json: UserSerializer.new(@user).serializable_hash[:data][:attributes], status: :created
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render json: UserSerializer.new(@user).serializable_hash[:data][:attributes]
+    else
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+
     end
   end
 

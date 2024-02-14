@@ -1,6 +1,6 @@
 class Api::V1::TasksController < ApiController
-
-  skip_before_action :authorize, only: [:index, :show]
+  before_action :authorize_admin
+  before_action :authorize_user, only: [:index, :show]
 
   def index
     @tasks = Task.all
