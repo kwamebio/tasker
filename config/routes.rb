@@ -12,6 +12,13 @@ Rails.application.routes.draw do
         end
       end
       resources :admins
+      resources :notifications do
+        collection do
+          patch 'mark_as_read'
+          patch 'mark_all_as_read'
+        end
+      end
+      resources :projects
     end
   end
 end
