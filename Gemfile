@@ -26,6 +26,8 @@ gem "jsonapi-serializer"
 gem 'email_address', '~> 0.2.4'
 gem "jwt"
 gem 'sprockets'
+gem 'carrierwave', '~> 3.0'
+gem 'aws-sdk-s3', '~> 1.143'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

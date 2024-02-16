@@ -1,4 +1,8 @@
 class Api::V1::ProjectsController < ApiController
+  skip_before_action :authorize_user
+  skip_before_action :authorize_admin, only: [:index]
+
+
   def index
     @projects = Project.all
     render json: ProjectSerializer.new(@projects).serializable_hash[:data].map { |project| project[:attributes] }
