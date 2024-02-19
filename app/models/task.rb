@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   belongs_to :users
   belongs_to :project
   has_many :notifications, dependent: :destroy
-  h
+
 
 
   after_create :create_notification
