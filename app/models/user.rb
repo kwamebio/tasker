@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :tasks
   belongs_to :project, optional: true
   has_many :notifications
+  has_one_attached :images
+  has_many_attached :videos do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   validates :first_name, :last_name, :phone_number, :email, presence: true
   validates :email, uniqueness: true
