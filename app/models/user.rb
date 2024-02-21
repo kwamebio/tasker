@@ -19,4 +19,8 @@ class User < ApplicationRecord
     auth_token
   end
 
+  def images_url
+    images.map{|image| image.url} if images.attached?
+  end
+
 end
