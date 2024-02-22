@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :tasks
   belongs_to :project, optional: true
   has_many :notifications
-  has_one_attached :images
+  has_many_attached :images
   has_many_attached :videos do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
@@ -19,8 +19,8 @@ class User < ApplicationRecord
     auth_token
   end
 
-  def images_url
-    images.map{|image| image.url} if images.attached?
-  end
+  # def images_url
+  #   images.map{|image| image.url} if images.attached?
+  # end
 
 end

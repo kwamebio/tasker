@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :email
       t.string :password_digest
       t.string :auth_token
+      t.string :images
+      t.string :videos
 
 
       t.timestamps
