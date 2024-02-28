@@ -12,6 +12,13 @@ class Api::V1::UsersController < ApiController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    if @user
+      render json: UserSerializer.new(@user).serializable_hash[:data][:attributes]
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
