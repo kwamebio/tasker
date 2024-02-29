@@ -14,7 +14,7 @@ class Api::V1::ProjectsController < ApiController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = current_admin.projects.new(project_params)
     if @project.save
       render json: ProjectSerializer.new(@project).serializable_hash[:data][:attributes], status: :created
     else

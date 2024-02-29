@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :admin
-  belongs_to :users
+  belongs_to :user
   belongs_to :project
   has_many :notifications, dependent: :destroy
 

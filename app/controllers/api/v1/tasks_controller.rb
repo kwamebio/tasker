@@ -1,6 +1,5 @@
 class Api::V1::TasksController < ApiController
-  before_action :authorize_admin
-  before_action :authorize_user, only: [:index, :show]
+  skip_before_action :authorize_user, only: [:index, :show]
 
   def index
     @tasks = Task.all
@@ -47,6 +46,6 @@ class Api::V1::TasksController < ApiController
   private
 
   def task_params
-    params.permit(:title, :description, :status, :body, :user_id, :start_date, :end_date)
+    params.permit(:title, :description, :status, :body, :start_date, :end_date, :project_id, :user_id)
   end
 end

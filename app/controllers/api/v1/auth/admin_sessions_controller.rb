@@ -1,6 +1,7 @@
-class Api::V1::AdminSessionsController < ApiController
+class Api::V1::Auth::AdminSessionsController < ApiController
 
-  skip_before_action :authorize, only: [:create]
+  skip_before_action :authorize_admin, only: [:create]
+  skip_before_action :authorize_user, only: [:create]
 
     def create
       admin = Admin.find_by(email: admin_params[:email])

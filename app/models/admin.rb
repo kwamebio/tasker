@@ -6,4 +6,10 @@ class Admin < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 
+
+  def token
+    update(auth_token: JsonWebToken.encode({ user_id: id }))
+    auth_token
+  end
+
 end
