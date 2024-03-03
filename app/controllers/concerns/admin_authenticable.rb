@@ -20,8 +20,8 @@ module AdminAuthenticable
       token
     end
 
-    def find_current_admin_by_token(token)
-        decoded_token = JsonWebToken.decode(token)
-        Admin.find(decoded_token[:admin_id])
-    end
+    # def find_current_admin_by_token(token)
+    #     decoded_token = JsonWebToken.decode(token)
+    #     Admin.find(decoded_token[:admin_id])
+    # end
 end
