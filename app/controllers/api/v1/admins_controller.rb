@@ -3,8 +3,9 @@ class Api::V1::AdminsController < ApiController
   skip_before_action :authorize_user
 
   def create
-    @admin = Admin.new(admin_params)
-    if @admin.save
+    @admin = User.new(admin_params)
+
+    if @admin.role == "admin" && @admin.save
       render json: AdminSerializer.new(@admin).serializable_hash[:data][:attributes], status: :created
     else
       render json: { errors: @admin.errors.full_messages }, status: :unprocessable_entity

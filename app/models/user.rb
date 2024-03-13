@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  self.primary_key = 'id'
 
   has_secure_password
   has_many :tasks
@@ -14,6 +15,10 @@ class User < ApplicationRecord
   validates_with EmailAddress::ActiveRecordValidator, field: :email
   validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*[A-Z])(?=.*[\W_])/, message: "must include at least one capital letter and one symbol" }, on: :create
 
+
+  enum role: { user: 0, admin: 1 }
+
+
   def token
     update(auth_token: JsonWebToken.encode({ user_id: id }))
     auth_token
@@ -22,5 +27,7 @@ class User < ApplicationRecord
   # def images_url
   #   images.map{|image| image.url} if images.attached?
   # end
+  #
+
 
 end

@@ -29,6 +29,7 @@ gem 'sprockets'
 gem 'carrierwave', '~> 3.0'
 gem "aws-sdk-s3", require: false
 gem "dotenv-rails"
+gem 'uuid', '~> 2.3', '>= 2.3.9'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

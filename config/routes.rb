@@ -18,6 +18,7 @@ Rails.application.routes.draw do
           patch 'mark_all_as_read'
         end
       end
+
       resources :projects
     end
   end

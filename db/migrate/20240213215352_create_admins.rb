@@ -1,6 +1,6 @@
 class CreateAdmins < ActiveRecord::Migration[7.1]
   def change
-    create_table :admins do |t|
+    create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
       t.string :first_name
       t.string :last_name
       t.string :phone_number
