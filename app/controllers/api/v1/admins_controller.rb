@@ -12,14 +12,14 @@ class Api::V1::AdminsController < ApiController
     end
   end
 
-  # def update
-  #   @admin = Admin.find(params[:id])
-  #   if @admin.update(admin_params)
-  #     render json: AdminSerializer.new(@admin).serializable_hash[:data][:attributes]
-  #   else
-  #     render json: { errors: @admin.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    @admin = Admin.find(params[:id])
+    if @admin.update(admin_params)
+      render json: AdminSerializer.new(@admin).serializable_hash[:data][:attributes]
+    else
+      render json: { errors: @admin.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     @admin = Admin.find(params[:id])
