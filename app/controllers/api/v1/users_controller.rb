@@ -4,7 +4,15 @@ class Api::V1::UsersController < ApiController
   skip_before_action :authorize_admin, only: [:create]
 
   def create
-    @user = User.new(user_params)
+    @user = User.create!(user_params.except(:images))
+
+    images = params[:user][:images]
+    if images
+      images.each do |image|
+        @user.images.attach(image)
+      end
+    end
+
     if @user.save
       render json: UserSerializer.new(@user).serializable_hash[:data][:attributes], status: :created
     else
@@ -32,7 +40,7 @@ class Api::V1::UsersController < ApiController
   private
 
   def user_params
-    params.permit(:first_name, :last_name, :phone_number, :email, :password, :password_confirmation)
+    params.permit(:first_name, :last_name, :phone_number, :email, :password, :password_confirmation, images: [])
   end
 
 end

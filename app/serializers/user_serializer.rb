@@ -4,11 +4,11 @@ class UserSerializer
 
 
 
-  attribute :images do |user|
-    user.images.map do |image|
-      rails_blob_path(image, only_path: true)
-    end
-  end
+  # attribute :images do |user|
+  #   user.images.map do |image|
+  #     rails_blob_path(image, only_path: true)
+  #   end
+  # end
 
   # attribute :videos do |user|
   #   user.videos.map do |video|
