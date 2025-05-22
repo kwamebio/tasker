@@ -20,7 +20,7 @@ module UserAuthenticable
     token
   end
 
-  def find_current_admin_by_token(token)
+  def find_current_user_by_token(token)
       decoded_token = JsonWebToken.decode(token)
       User.find(decoded_token[:user_id])
   end
